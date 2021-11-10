@@ -1,0 +1,26 @@
+*{
+
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    /*background-color: rgb(220, 169, 250);*/ 
+   
+}
+
+
+body{
+    background-image: url("./Images/fantansmasfondo.jpg");
+}
+
+#canvas2{
+    /*background-color: rgba(rgb(235, 186, 247);*/
+    border-radius: 100px;
+    border-style:inherit;
+    display: flex;
+    align-content: center;
+    padding: 100px;
+    background-color: rgb(235, 210, 250);
+    
+   }
