@@ -14,12 +14,13 @@ body{
     background-image: url("./Images/fantansmasfondo.jpg");
 }
 
-#canvas2{
-    /*background-color: rgba(rgb(235, 186, 247);*/
+.canvas2{
     border-radius: 100px;
     border-style:inherit;
     display: flex;
     align-content: center;
+    align-items: center;
+    justify-content: center;
     padding: 100px;
     background-color: rgb(235, 210, 250);
     
