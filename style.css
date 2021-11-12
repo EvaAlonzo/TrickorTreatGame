@@ -5,8 +5,7 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-    /*background-color: rgb(220, 169, 250);*/ 
-   
+    /*background-color: rgb(220, 169, 250);*/   
 }
 
 
@@ -27,6 +26,17 @@ body{
 }
 
 #start-button{
+    align-content: center;
+    border-style: none;
+    background-color: transparent;
+}
+
+.btnRetry{
+    display: none;
+
+}
+
+.btnRetryview{
     align-content: center;
     border-style: none;
     background-color: transparent;

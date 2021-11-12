@@ -99,12 +99,10 @@ function drawMonsters(){
       
       if(player.collision(monster)){
         monster.live -= 10
-         if(player.life === 0)  {
-          gameOver()
-         }
          
          if(monster.live < 0){
           player.life -- ;
+          
           monsters.splice(index_monster,1) //Desaparece el mounstro al tocarlo
           
          }
@@ -140,12 +138,11 @@ function drawMonsters2(){
       
       if(player.collision(monster2)){
         monster2.live -= 10
-         if(player.life === 0)  {
-          gameOver()
-         }
+        
          
          if(monster2.live < 0){
           player.life -- ;
+          
           monsters2.splice(index_monster2,1) //Desaparece el mounstro al tocarlo
           
          }
@@ -292,7 +289,9 @@ function drawBonus(){
 
       if(player.collision(bonus)){
         score += 3
+       
         bonusx.splice(index_bonus,1)   
+        player.status = true
          
      
    }
@@ -305,10 +304,22 @@ function drawBonus(){
   })
 }
 
+  /*function inmunity(){
+    if(player.collision()){
+     
+    }
+   console.log("???")
+}*/
 
 
 //startgame endgame
-    document.getElementById("start-button").onclick = function() {
+const retryButton = document.getElementById("retry-button");
+retryButton.onclick = function(){
+  //alert("logrado")
+  window.location.reload()
+}
+
+     document.getElementById("start-button").onclick = function() {
         if(requestId){
           return true
         }
@@ -323,7 +334,20 @@ function drawBonus(){
       function gameOver(){
         fondo.gameOver()
         requestId = undefined
+        
+
+        if(requestId === undefined){
+          
+           retryButton.classList.remove("btnRetry");
+           retryButton.classList.add("btnRetryview") 
+           document.getElementById("start-button").classList.add("btnRetry")
       }
+      }
+
+       
+      
+
+      
 
 
 
@@ -351,12 +375,19 @@ function update(){
     drawKids2();
 
  
-    //enemies 
-    generateMonsters();
-    drawMonsters();
+    if(player.status){
+      setTimeout(() => {
+        player.status = false
+      },6000)
+    }else{
+      //enemies 
+      generateMonsters();
+      drawMonsters();
 
-    generateMonsters2();
-    drawMonsters2();
+      generateMonsters2();
+      drawMonsters2();
+    }
+   
    
 
      //candies
@@ -372,19 +403,26 @@ function update(){
      generateBonus();
      drawBonus();
 
+     //inmunity
+     //inmunity();
+
     
 
      //Score, points, life
      ctx.font= "80px Helvetica"
-     ctx.fillStyle ="white"
+     ctx.fillStyle = "white"
      ctx.fillText(`Score: ${score}`,1500,80)
 
      //drawLives();
      ctx.font= "80px Helvetica"
-     ctx.fillStyle ="pink"
+     ctx.fillStyle = "white"
      ctx.fillText(`Lives: ${player.life}`,1160,80)
   
-  
+    if( player.life === 0){
+      gameOver();
+      //retry();
+    }
+
     if(requestId){
        requestAnimationFrame(update)
     }
@@ -394,7 +432,7 @@ function update(){
   addEventListener("keydown",(event)=>{
     //arriba w
     if (event.keyCode === 87) {
-      clearCanvas();
+      //clearCanvas();
       player.up()
       if (player.y > 550 ) {
         player.y -= 50;
@@ -403,7 +441,7 @@ function update(){
   
     //abajo x
    if (event.keyCode === 88) {
-      clearCanvas();
+      //clearCanvas();
       player.down()
       if (player.y < 958) { 
         player.y += 50;
@@ -413,7 +451,7 @@ function update(){
 
      //izquierda39 
    if (event.keyCode === 37) {
-    clearCanvas();
+    //clearCanvas();
     if (player.x > 400) { 
       player.x -= 10;
     }
@@ -421,7 +459,7 @@ function update(){
 
      //derecha37 
      if (event.keyCode === 39) {
-      clearCanvas();
+      //clearCanvas();
       player.right()
       if (player.x < 870) { 
         fondo.x -= 13;

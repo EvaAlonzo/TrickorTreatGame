@@ -10,6 +10,7 @@ let candies = [];
 let lollies = [];
 let wonkas = [];
 let bonusx = [];
+//let noMonsters = [];
 let scoreText; 
 let score = 0;
 let playerLife = 3;
@@ -84,6 +85,7 @@ class Player extends Sprite {
             
         });
         this.life = playerLife
+        this.status = false
     }
 
 

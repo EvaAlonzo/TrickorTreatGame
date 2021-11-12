@@ -96,8 +96,14 @@ class Background{
     gameOver(){
         ctx.drawImage(this.imgGameOver,260,50,1400,1010)
         ctx.font= "80px Helvetica"
-        ctx.fillStyle ="DimGray"
+        ctx.fillStyle ="#DB7093"
         ctx.fillText(`Final Score: ${score}`,705,773)
+    }
+
+    retry(){
+        ctx.font= "80px Helvetica"
+        ctx.fillStyle ="#DB7093"
+        ctx.fillText(`Retry?`,715,773)
     }
 }
 
