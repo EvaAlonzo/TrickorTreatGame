@@ -19,7 +19,7 @@ function generateKids(){
       let x = Math.random() * (1900 - 200)+ 200;
       let y = Math.random() * (1000 - 495) + 495;
 
-      const kid = new Kids(x,y,ctx,"./Images/kidVampire.png")
+      const kid = new Kids(x,y,ctx,"./Images/kv.png")
 
       kids.push(kid)
       //enemies = [...enemies, enemy ]
