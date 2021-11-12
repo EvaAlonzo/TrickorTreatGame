@@ -428,9 +428,10 @@ function update(){
     }
   }
 
-
+ 
   addEventListener("keydown",(event)=>{
     //arriba w
+    event.preventDefault()
     if (event.keyCode === 87) {
       //clearCanvas();
       player.up()
